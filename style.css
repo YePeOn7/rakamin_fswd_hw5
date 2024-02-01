@@ -1,0 +1,77 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    --orange: rgb(255, 174, 0);
+    --orange-dark: rgb(220, 150, 0);
+}
+
+.hero{
+    width: 80%;
+    height: 450px;
+    position: relative;
+    margin: 100px auto;
+}
+
+.btn-box{
+    display:flex;
+    border-bottom:  1px solid #999;
+}
+
+.btn-box button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 15px 15px;
+    margin-right: 50px;
+    font-size: 20px;
+}
+
+.btn-box .bi{
+    margin-right: 20px;
+}
+
+.btn-box button:hover .bi{
+    color: var(--orange);
+}
+
+.btn-custom {
+    padding: 7px;
+    border-radius: 7px;
+    border: none;
+    background-color: var(--orange);
+    color: #ffffff;
+}
+
+.btn-custom:hover {
+    background-color: var(--orange-dark);
+}
+
+
+.tab-content{
+    display: none;
+}
+
+/* The order of definition affect how it could overwrite the other. In this case tab active could overwrite tab-content. Otherwise, we could add !important attribute */
+.tab-active{
+    display: block !important;
+}
+
+.show-as-active{
+    color: var(--orange);
+}
+
+/* I don't know why need to add manually here instead of using mr-x from bootstrap */
+.alert .bi{
+    margin-right: 10px;
+}
+
+#successNotification{
+    display: none;
+}
+    
+    

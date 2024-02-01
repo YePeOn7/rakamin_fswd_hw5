@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="hero">
+        <div class="btn-box">
+            <button class="show-as-active" onclick="showTab('form_section')" id="btn-form"><i class="bi bi-card-heading"></i>FORM</button>
+            <button onclick="showTab('table_section')" id="btn-table"><i class="bi bi-table" ></i>TABLE</button>
+        </div>
+        <section id="form_section" class="tab-content tab-active">
+            <div class="container-lg">
+                <div class="text-center">
+                    <h2>Welcome</h2>
+                    <p class="lead">Please fill the following form below</p>
+                </div>
+
+                <div class="row justify-content-center my-5">
+                    <div class="col-md-6">
+                        <form class="needs-validation" novalidate>
+                            <div>
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="eg: Yohan" required>
+                                <div id="nameValidataionMessage" class="invalid-feedback">Minimum 10 characters</div>
+                            </div>
+                            
+                            <div>
+                                <label for="age" class="form-label">Age</label>
+                                <input type="number" class="form-control" id="age" placeholder="eg: 28" required>
+                                <div id="ageValidataionMessage" class="invalid-feedback">Age need more than 25</div>
+                            </div>
+                            
+                            <div>
+                                <label for="stipend" class="form-label">Stipend</label>
+                                <input type="number" class="form-control" id="stipend" placeholder="eg: 200000" required>
+                                <div id="stipend" class="invalid-feedback">Stipend need in range 100000 - 1000000</div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-md-2 ">
+                                    <button type="submit" class="btn-custom my-5" id="submitButton">Submit</button>
+                                </div>
+                                <div class="col-md-10 alert alert-primary mt-2" role="alert" id="successNotification">
+                                    <i class="bi bi-check-circle-fill"></i>Form has been submitted
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="table_section" class="tab-content">
+            <table id="dataTable" class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Stipend</th>
+                    <th></th>
+                </tr>
+            </table>
+        </section>
+
+        
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
