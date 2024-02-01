@@ -90,23 +90,6 @@ function stipendAlertHandle() {
     else stipend.setCustomValidity("zzz");
 }
 
-function customValidityProcess() {
-    let name = document.getElementById("name");
-    let age = document.getElementById("age");
-    let stipend = document.getElementById("stipend");
-
-    let nameValue = inputName.value.trim();
-
-    if (validateName()) name.setCustomValidity("xxx");
-    else name.setCustomValidity("");
-
-    if (validateAge()) age.setCustomValidity("yyy");
-    else age.setCustomValidity("");
-
-    if (validateStipend()) stipend.setCustomValidity("zzz");
-    else stipend.setCustomValidity("");
-}
-
 function validCallback() {
     let successNotification = document.getElementById("successNotification");
 
