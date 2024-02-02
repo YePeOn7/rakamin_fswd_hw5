@@ -1,3 +1,34 @@
+class Form{
+    constructor(id, validationCb){
+        this.form = document.getElementById(id);
+        this.validationCb = validationCb;
+    }
+
+    validate(){
+        return this.validationCb(this.form.value);
+    }
+
+    alertHandle(){
+        if (this.validate()) this.form.setCustomValidity("");
+        else this.form.setCustomValidity("---"); // can set anything. Just don't let it empty
+    }
+
+    getValue(){
+        return this.form.value;
+    }
+}
+
+// Creating form objects
+let nameForm = new Form("name", function(nameValue){
+    return (nameValue.length >= 10);
+});
+let ageForm = new Form("age", function(ageValue){
+    return (ageValue.trim() >= 25);
+})
+let stipendForm = new Form("stipend", function(stipendValue){
+    return (stipendValue >= 100000 && stipendValue <= 1000000);
+})
+
 function submitForm() {
     const name = document.getElementById("name").value
     const age = document.getElementById("age").value
@@ -56,40 +87,6 @@ function showTab(id) {
     }
 }
 
-function validateName() {
-    return (document.getElementById('name').value.trim().length >= 10);
-}
-
-function validateAge() {
-    return (document.getElementById('age').value.trim() >= 25);
-}
-
-function validateStipend() {
-    let stipend = document.getElementById('stipend').value.trim();
-    return (stipend >= 100000 && stipend <= 1000000);
-}
-
-function nameAlertHandle() {
-    // console.log("nameAlertHandle is triggered");
-    let name = document.getElementById("name");
-    if (validateName()) name.setCustomValidity("");
-    else name.setCustomValidity("xxx");
-}
-
-function ageAlertHandle() {
-    // console.log("ageAlertHandle is triggered");
-    let age = document.getElementById("age");
-    if (validateAge()) age.setCustomValidity("");
-    else age.setCustomValidity("yyy");
-}
-
-function stipendAlertHandle() {
-    // console.log("stipendAlertHandle is triggered");
-    let stipend = document.getElementById("stipend");
-    if (validateStipend()) stipend.setCustomValidity("");
-    else stipend.setCustomValidity("zzz");
-}
-
 function validCallback() {
     let successNotification = document.getElementById("successNotification");
 
@@ -118,29 +115,29 @@ function validate(validCb, invalidCb) {
     let inputAge = document.getElementById('age');
     let inputStipend = document.getElementById('stipend');
 
-    let nameValid = validateName();
-    let ageValid = validateAge();
-    let stipendValid = validateStipend();
+    let nameValid = nameForm.validate();
+    let ageValid = ageForm.validate();
+    let stipendValid = stipendForm.validate();
 
     // need to call ouside event also to get initial validation message
-    nameAlertHandle();
-    ageAlertHandle();
-    stipendAlertHandle();
+    nameForm.alertHandle();
+    ageForm.alertHandle();
+    stipendForm.alertHandle();
 
     // to update the validation message when user changing the input
     // console.log("add name input event listener");
     inputName.addEventListener("input", function () {
-        nameAlertHandle();
+        nameForm.alertHandle();
     });
 
     // console.log("add age input event listener");
     inputAge.addEventListener("input", function () {
-        ageAlertHandle();
+        ageForm.alertHandle();
     });
 
     // console.log("add stipend input event listener");
     inputStipend.addEventListener("input", function () {
-        stipendAlertHandle();
+        stipendForm.alertHandle();
     })
 
     // perform callback when success or fail
